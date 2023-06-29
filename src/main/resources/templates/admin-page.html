@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="' '+ ${greeting}"></h1>
+<form th:action="@{/logout}" method="post">
+    <button type="submit" class="btn btn-primary">Logout</button>
+</form>
+
+
+<form th:action="@{/admin/add}" th:method="POST" th:object="${new_question}">
+    <label>Überschrift: </label>
+    <input type="text" th:field="*{description}">
+    <br>    <label>Frage: </label>
+    <input type="text" th:field="*{content}">
+    <br>
+    <label>Ablaufdatum:</label>
+    <input type="date"
+           th:field="*{expiration_date}"
+    value="2023-03-26"
+           min="2023-03-26">
+    <br>
+    <input type="submit" value="Senden">
+</form>
+
+<a th:href="@{/admin/questions}"> show all questions</a>
+
+
+</body>
+</html>

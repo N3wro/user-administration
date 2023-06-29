@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Frage beantworten</title>
+</head>
+<body>
+<h1 th:text="${question.description}"></h1>
+<p th:text="${question.content}"></p>
+<form method="post" th:object="${new_answer}">
+
+    <ul>
+        <li th:each="answer: ${answers}">
+            <input type="radio"
+                   th:field="*{answer}"
+                   th:value="${answer}"
+                   th:text="${answer}"/>
+        </li>
+    </ul>
+
+    <input type="submit">
+</form>
+<a th:href="@{/user/home}">Zurück zu den Fragen</a>
+</body>
+</html>
